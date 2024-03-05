@@ -22,3 +22,5 @@ If you use this workflow in a paper, don't forget to give credits to the authors
 5. Assigning taxonomy with [Megan6](https://www.computomics.com/services/megan6.html)
 
 [![Code style: snakefmt](https://img.shields.io/badge/code%20style-snakefmt-000000.svg)](https://github.com/snakemake/snakefmt)
+
+lalala
