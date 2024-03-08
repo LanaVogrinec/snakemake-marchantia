@@ -3,16 +3,11 @@
 # https://snakemake.readthedocs.io/en/stable/snakefiles/best_practices.html,
 # in particular regarding the standardized folder structure mentioned there.
 
-# conda activate tobamo-snakemake
-# snakemake -n already starts the download
-# snakemake --use-conda -c40 -k -p
+# conda activate snakemake
+# snakemake --use-conda -c60 -k -p
 
-
-import os
+#
 import pandas as pd
-
-os.system("workflow/scripts/download_sra.sh")
-
 
 configfile: "config/config.yaml"
 
@@ -20,44 +15,19 @@ configfile: "config/config.yaml"
 samples = pd.read_table(config["samples"])
 
 
-wildcard_constraints:
-    accession="ERR\d+|SRR\d+|DRR\d+",
-
-
-ruleorder: spades_isolate_se > megahit_se
-ruleorder: spades_isolate_pe > megahit_pe
-
-
 ##### Target rules #####
 
 
 rule all:
     input:
-        expand(
-            "results/{accession}/09_{accession}_megan6_results.csv",
-            accession=samples["samples"],
-        ),
-    output:
-        "results/megan6_results_combined.csv",
-    shell:
-        """
-        python workflow/scripts/combine_results.py {input} {output}
-        """
-
+        expand("results/{accession}/04_{accession}_meganizer.daa", accession=samples["samples"]),
+        
+        
+        
+    
 
 ##### Modules #####
-DEBUG = True
-
-if DEBUG:
-
-    include: "rules/trim_debug.smk"
-
-else:
-
-    include: "rules/trim.smk"
-
-
-include: "rules/assembly.smk"
-include: "rules/filtering.smk"
-include: "rules/diamond.smk"
-include: "rules/megan6.smk"
+include: "rules/download_SRA.smk"
+include: "rules/trim.smk"
+include: "rules/megahit.smk"
+include: "rules/megan_meganizer.smk"
