@@ -30,4 +30,6 @@ rule all:
 include: "rules/download_SRA.smk"
 include: "rules/trim.smk"
 include: "rules/megahit.smk"
+include: "rules/diamond.smk"
 include: "rules/megan_meganizer.smk"
+include: "rules/"megan_export.smk"
