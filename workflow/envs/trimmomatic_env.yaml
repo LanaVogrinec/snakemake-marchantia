@@ -1,4 +1,4 @@
-name: trimmomatic
+name: trimmomatic_env
 channels:
   - bioconda
 dependencies:

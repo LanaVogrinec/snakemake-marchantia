@@ -1,4 +1,4 @@
-name:  megahit
+name:  megahit_env
 channels:
   - bioconda
 dependencies:

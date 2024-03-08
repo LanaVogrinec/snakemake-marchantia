@@ -1,0 +1,7 @@
+name: diamond_env
+channels:
+  - bioconda
+dependencies:
+  - diamond=2.1.9
+  - python=3.9.0
+  - pandas=1.1.5
