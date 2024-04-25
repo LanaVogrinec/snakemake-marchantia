@@ -9,8 +9,8 @@ rule megan_meganizer:
     benchmark:
         "results/{accession}/04_{accession}_benchmark_meganizer.txt"
     conda:
-        "../envs/megan_env.yaml"
-    threads: 3
+        "../envs/diamond-megan.yaml"
+    threads: 40
     shell:
         """
         cp {input} {output}

@@ -1,13 +1,13 @@
 rule megahit:
     input:
-        r1="results/{accession}/01_{accession}_trim_1_paired.fq.gz",
-        r2="results/{accession}/01_{accession}_trim_2_paired.fq.gz",
+        r1="results/{biosample_ID}/01_{biosample_ID}_trim_1_paired.fq.gz",
+        r2="results/{biosample_ID}/01_{biosample_ID}_trim_2_paired.fq.gz",
     output:
-        d=temp(directory("results/{accession}/{accession}_megahit")),
-        f="results/{accession}/02_{accession}_megahit_contigs.fasta",
+        d=temp(directory("results/{biosample_ID}/{biosample_ID}_megahit")),
+        f="results/{biosample_ID}/02_{biosample_ID}_megahit_contigs.fasta",
     log:
-        logO="logs/megahit/{accession}.log",
-        logE="logs/megahit/{accession}.err.log",
+        logO="logs/megahit/{biosample_ID}.log",
+        logE="logs/megahit/{biosample_ID}.err.log",
     conda:
         "../envs/megahit_env.yaml"
     threads: 20
