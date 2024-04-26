@@ -8,7 +8,11 @@ rule megan_export:
         logO="logs/megan_export/{accession}.log",
         logE="logs/megan_export/{accession}.err.log",
     conda:
+<<<<<<< HEAD
         "../envs/diamond-megan.yaml"
+=======
+        "../envs/megan_env.yaml"
+>>>>>>> edec49089aa13d94fd104b786797fb906496cb3c
     shell:
         """
         daa2info -i {input} -r2c Taxonomy -p -o {output.taxon} > {log.logO} 2> {log.logE}
