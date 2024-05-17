@@ -1,24 +1,52 @@
-# Snakemake workflow: `tobamo-project`
+# Snakemake workflow: `project-marchantia`
+
+A Snakemake workflow designed to search for DNA viruses in high-throughput sequencing data from Marchantia polymorpha.
+This workflow is based on [project-tobamo] (https://github.com/nezapajek/project-tobamo) created by Neža Pajek (https://github.com/nezapajek). 
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥6.3.0-brightgreen.svg)](https://snakemake.github.io)
-[![GitHub actions status](https://github.com/nezapajek/tobamo-project/workflows/Tests/badge.svg?branch=main)](https://github.com/nezapajek/tobamo-project/actions?query=branch%3Amain+workflow%3ATests)
-
-
-A Snakemake workflow for `preparation of a curated catalogue of sequences of possible new tobamoviruses by scanning a large accumulated set of data from different metagenomics data repositories.`
-More info: http://projects.nib.si/tobamo/
 
 ## Usage
 
-The usage of this workflow is described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=nezapajek%2Ftobamo-project).
+To run this Snakemake workflow, follow these steps:
 
-If you use this workflow in a paper, don't forget to give credits to the authors by citing the URL of this (original) repository and its DOI (see above).
+1. **Prerequisites**: Ensure that you have the following software and dependencies installed:
+   - Snakemake (version ≥7.32.4)
+   
+Snakemake is best installed via the Mamba package manager (a drop-in replacement for conda). If you have neither Conda nor Mamba, it can be installed via Mambaforge. Given that Mamba is installed, run:
+
+        mamba create -c conda-forge -c bioconda --name snakemake snakemake
+
+For all following commands ensure that this environment is activated via:
+
+        conda activate snakemake
+
+2. **Clone Repository**: Clone this repository to your local machine.
+
+First, create an appropriate project working directory on your system and enter it:
+
+        mkdir -p path/to/project-workdir
+        cd path/to/project-workdir
+
+Then, clone the github repository:
+   
+        git clone https://github.com/LanaVogrinec/snakemake-marchantia
+
+3. **Configure workflow** Modify the workflow to your needs.
+
+Modify the configuration file (config/config.yaml) and the Snakefile (workflow/Snakefile) to to specify input files, parameters, and any other settings specific to your project. All of the additional files, described in config.yaml, need to be present with example entries inside of the config folder.
+
+4. **Run workflow** Run the workflow with the following command: 
+
+        snakemake --use-conda --cores <num_cores> 
 
 ## Workflow
 
-1. Quality control and adapter trimming with [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
-2. De Novo Assembly with [megahit](https://www.metagenomics.wiki/tools/assembly/megahit) and [SPAdes](https://cab.spbu.ru/software/spades/)
-3. Search for similarity against all tobamoviral protein sequences with [Diamond](https://bio.tools/diamond) blastx
+1. Download and merging of all fastq files associated with a Biosample ID from the SRA database. 
+    (script: download_biosample.sh., list of biosample IDs and SRA IDs: biosample_ID.txt)
+2. Quality control and adapter trimming with [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
+3. De Novo Assembly with [megahit](https://www.metagenomics.wiki/tools/assembly/megahit)
 4. Search for similarity against non-redundant (NR) protein database with [Diamond](https://bio.tools/diamond) blastx
-5. Assigning taxonomy with [Megan6](https://www.computomics.com/services/megan6.html)
+5. Assigning taxonomy with [Megan6] (https://www.computomics.com/services/megan6.html).
 
-[![Code style: snakefmt](https://img.shields.io/badge/code%20style-snakefmt-000000.svg)](https://github.com/snakemake/snakefmt)
+
+If you use this workflow in a paper, don't forget to give credits to the authors by citing the URL of the original repository.

@@ -4,65 +4,38 @@
 # in particular regarding the standardized folder structure mentioned there.
 
 # conda activate snakemake
-# snakemake --use-conda -c60 -k -p
+# snakemake --use-conda -cores 60 -k -p
 
-#
-<<<<<<< HEAD
+
 import os
 import pandas as pd
 
 #os.system("workflow/scripts/download_biosample.sh")
 
 
-=======
-import pandas as pd
-
->>>>>>> edec49089aa13d94fd104b786797fb906496cb3c
 configfile: "config/config.yaml"
 
 
 samples = pd.read_table(config["samples"])
 
 
-<<<<<<< HEAD
-
-
-# ##### Target rules #####
-=======
-##### Target rules #####
->>>>>>> edec49089aa13d94fd104b786797fb906496cb3c
-
 # Define the final output rule
-
 rule all:
-<<<<<<< HEAD
    input:
-        expand("results/{biosample_ID}/03_{biosample_ID}_megahit_diamond.daa", biosample_ID=samples["samples"]),
+        expand("results/{biosample_ID}/05_{biosample_ID}_meganizer_read_classification.tsv", biosample_ID=samples["samples"]),
+        expand("results/{biosample_ID}/05_{biosample_ID}_meganizer_class_count.tsv", biosample_ID=samples["samples"]),
         
         
-
-
-
-
+        
 ##### Modules #####
 include: "rules/fastq_gunzip.smk"
 include: "rules/trim.smk"
 include: "rules/megahit.smk"
 include: "rules/diamond.smk"
-#include: "rules/megan_meganizer.smk"
-#include: "rules/megan_export.smk"
-
-=======
-    input:
-        expand("results/{accession}/04_{accession}_meganizer.daa", accession=samples["samples"]),
-        
-        
-        
-    
-
-##### Modules #####
-include: "rules/download_SRA.smk"
-include: "rules/trim.smk"
-include: "rules/megahit.smk"
 include: "rules/megan_meganizer.smk"
->>>>>>> edec49089aa13d94fd104b786797fb906496cb3c
+include: "rules/megan_export.smk"
+
+
+
+         
+    

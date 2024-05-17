@@ -1,21 +1,17 @@
 rule megan_meganizer:
     input:
-        "results/{accession}/03_{accession}_megahit_diamond.daa",
+        "results/{biosample_ID}/03_{biosample_ID}_megahit_diamond.daa",
     output:
-        "results/{accession}/04_{accession}_meganizer.daa",
+        "results/{biosample_ID}/04_{biosample_ID}_meganizer.daa",
     log:
-        logO="logs/megan_meganizer/{accession}.log",
-        logE="logs/megan_meganizer/{accession}.err.log",
+        logO="logs/megan_meganizer/{biosample_ID}.log",
+        logE="logs/megan_meganizer/{biosample_ID}.err.log",
     benchmark:
-        "results/{accession}/04_{accession}_benchmark_meganizer.txt"
+        "results/{biosample_ID}/04_{biosample_ID}_benchmark_meganizer.txt"
     conda:
-<<<<<<< HEAD
         "../envs/diamond-megan.yaml"
     threads: 40
-=======
-        "../envs/megan_env.yaml"
-    threads: 3
->>>>>>> edec49089aa13d94fd104b786797fb906496cb3c
+
     shell:
         """
         cp {input} {output}

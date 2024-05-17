@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec > /DATB/PHEW/project-marchantia/logs/download_biosample_log.txt 2>&1
+exec > /DATB/PHEW/project-marchantia/logs/download_biosample_log_2.txt 2>&1
 
 num_lines=$(wc -l < workflow/biosample_ID.txt)
 echo "Total number of lines in biosample_ID.txt: $num_lines"

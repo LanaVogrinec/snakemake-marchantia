@@ -1,8 +1,0 @@
-name: megan_env
-channels:
-  - bioconda
-dependencies:
-  - python=3.9.0
-  - pandas=1.1.5
-  - megan=6.24.20
-  - openjdk=11.0.1
