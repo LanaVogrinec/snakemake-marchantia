@@ -10,7 +10,7 @@ This workflow is based on [project-tobamo] (https://github.com/nezapajek/project
 To run this Snakemake workflow, follow these steps:
 
 1. **Prerequisites**: Ensure that you have the following software and dependencies installed:
-   - Snakemake (version ≥7.32.4)
+   - Snakemake (version ≥6.3.0)
    
 Snakemake is best installed via the Mamba package manager (a drop-in replacement for conda). If you have neither Conda nor Mamba, it can be installed via Mambaforge. Given that Mamba is installed, run:
 
