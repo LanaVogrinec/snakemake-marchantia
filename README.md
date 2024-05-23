@@ -33,7 +33,7 @@ Then, clone the github repository:
 
 3. **Configure workflow** Modify the workflow to your needs.
 
-Modify the configuration file (config/config.yaml) and the Snakefile (workflow/Snakefile) to to specify input files, parameters, and any other settings specific to your project. All of the additional files, described in config.yaml, need to be present with example entries inside of the config folder.
+Modify the configuration file (config/config.yaml) and the Snakefile (workflow/Snakefile) to specify input files, parameters, and any other settings specific to your project. 
 
 4. **Run workflow** Run the workflow with the following command: 
 

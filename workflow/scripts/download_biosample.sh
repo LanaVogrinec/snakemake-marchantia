@@ -2,7 +2,7 @@
 
 exec > /DATB/PHEW/project-marchantia/logs/download_biosample_log_2.txt 2>&1
 
-num_lines=$(wc -l < workflow/biosample_ID.txt)
+num_lines=$(wc -l < workflow/scripts/biosample_ID.txt)
 echo "Total number of lines in biosample_ID.txt: $num_lines"
 
 while read -r biosample_ID run_IDs; do
@@ -25,4 +25,4 @@ while read -r biosample_ID run_IDs; do
     echo "Deleting original fastq files for biosample $biosample_ID"
     rm resources/SRA/$biosample_ID/SRR*_1.fastq resources/SRA/$biosample_ID/SRR*_2.fastq
     echo "Finished processing biosample $biosample_ID"
-done < workflow/biosample_ID.txt
+done < workflow/scripts/biosample_ID.txt

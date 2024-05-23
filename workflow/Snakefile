@@ -10,7 +10,7 @@
 import os
 import pandas as pd
 
-#os.system("workflow/scripts/download_biosample.sh")
+os.system("workflow/scripts/download_biosample.sh")
 
 
 configfile: "config/config.yaml"
@@ -23,7 +23,7 @@ samples = pd.read_table(config["samples"])
 rule all:
    input:
         expand("results/{biosample_ID}/05_{biosample_ID}_meganizer_read_classification.tsv", biosample_ID=samples["samples"]),
-        expand("results/{biosample_ID}/05_{biosample_ID}_meganizer_class_count.tsv", biosample_ID=samples["samples"]),
+        expand("results/{biosample_ID}/05_{biosample_ID}_meganizer_class_count.tsv", biosample_ID=samples["samples"]),       
         
         
         
