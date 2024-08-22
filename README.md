@@ -1,4 +1,5 @@
 # Snakemake workflow: `project-marchantia`
+[![DOI](https://zenodo.org/badge/767459781.svg)](https://zenodo.org/doi/10.5281/zenodo.13359070)
 
 A Snakemake workflow designed to search for DNA viruses in high-throughput sequencing data from Marchantia polymorpha.
 This workflow is based on [project-tobamo] (https://github.com/nezapajek/project-tobamo) created by Neža Pajek (https://github.com/nezapajek). 
